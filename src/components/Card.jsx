@@ -27,5 +27,7 @@ const Card2=({title,description})=>{
     //     allcards.map((card) => <Card details={card} key={i++} />);
     //   }
 
+//when export default function, direct import card when export const abc=... then when import {abc}
+
 export default Card;
 export {Card2};
