@@ -3,6 +3,7 @@ import resobj from "../utils/constants";
 import Navbar from "./Navbar";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Restaurant() {
   useEffect(() => {
@@ -59,7 +60,11 @@ function Restaurant() {
       </button>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {curr.map((res, index) => {
-          return <Rescard details={res} key={index} />;
+          return (
+            <Link key={res.info.id} to={`/restaurant/${res.info.id}`}>
+              <Rescard details={res} />
+            </Link>
+          );
         })}
       </div>
     </div>
