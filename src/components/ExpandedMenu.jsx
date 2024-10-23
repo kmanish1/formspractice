@@ -1,12 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { additem } from "../utils/cartSlice";
 
 const ExpandedMenu=(props)=>{
-    const [vis,setVis]=useState(false);
-    const handleToggle=()=>{
-        setVis(!vis);
+    const handleClick=()=>{
+        props.setExp();
     }
+    const vis=props.vis;
+    const dispatch=useDispatch();
+    const addtoCart=()=>{
+      dispatch(additem(props.category.card.card));
+    }
+    
     return (
-      <li key={props.index} onClick={handleToggle}>
+      <li key={props.index} onClick={handleClick}>
         <p className="font-bold text-3xl p-3 m-2 border-b-2 border">
           {props.category.card.card.title + " ⧭"}
         </p>
@@ -23,6 +30,7 @@ const ExpandedMenu=(props)=>{
                     : item.card.info.defaultPrice / 100 + " /-"}
                 </p>
                 <p>{item.card.info.description}</p>
+                <button onClick={addtoCart}>Add +</button>
               </li>
             );
           })}

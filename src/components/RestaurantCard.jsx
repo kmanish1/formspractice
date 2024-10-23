@@ -8,6 +8,7 @@ const RestaurantCard = () => {
   const [temp, setTemp] = useState(null);
   const [total, setTotal] = useState("");
   const { resID } = useParams();
+  const [exp,setExp]=useState(null);
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -56,7 +57,7 @@ const RestaurantCard = () => {
       <ul>
         {temp.map((category, index) => {
           return (
-            <ExpandedMenu category={category} key={index}/>
+            <ExpandedMenu category={category} key={index} vis={exp==index?true:false} setExp={()=>{setExp(index)}}/>
           );
         })}
       </ul>

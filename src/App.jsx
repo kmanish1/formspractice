@@ -4,16 +4,20 @@ import Restaurant from "./components/Restaurant"
 import Navbar from "./components/Navbar"
 import Shimmer from "./components/Shimmer"
 import { Suspense, lazy } from "react"
+import { Provider } from "react-redux"
+import appStore from "./utils/appStore"
 // import RestaurantCard from "./components/RestaurantCard"
 const RestaurantCard = lazy(() => import("./components/RestaurantCard"));
 
 function App() {
   return (
-    <>
-      <Navbar/>
-      <Outlet/>
-    </>
-  )
+    <Provider store={appStore}>
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    </Provider>
+  );
 }
 export const AppRouter = createBrowserRouter([
   {
