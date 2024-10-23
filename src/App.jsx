@@ -3,7 +3,9 @@ import Form from "./components/Form"
 import Restaurant from "./components/Restaurant"
 import Navbar from "./components/Navbar"
 import Shimmer from "./components/Shimmer"
-import RestaurantCard from "./components/RestaurantCard"
+import { Suspense, lazy } from "react"
+// import RestaurantCard from "./components/RestaurantCard"
+const RestaurantCard = lazy(() => import("./components/RestaurantCard"));
 
 function App() {
   return (
@@ -32,7 +34,11 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:resID",
-        element: <RestaurantCard/>,
+        element: (
+          <Suspense>
+            <RestaurantCard />
+          </Suspense>
+        ),
       },
     ],
   },
